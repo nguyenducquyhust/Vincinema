@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sun.security.krb5.internal.Ticket;
 
 @Entity(name = "room")
 @Table(name = "room")
@@ -22,14 +23,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Room {
 
-    public Room(String string, String string2, String string3, String string4, String string5, String string6) {
-    }
-
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    
-    @MapsId @OneToOne(fetch = FetchType.LAZY)
-    private Ticket ticket;
 
     @Column(name = "room_no")
     private int roomNo;

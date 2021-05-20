@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sun.security.krb5.internal.Ticket;
 
 @Entity(name = "film")
 @Table(name = "film")
@@ -27,9 +28,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Film {
-    
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "name")
@@ -60,16 +61,7 @@ public class Film {
     @Column(name = "poster")
     private String poster;
 
-    @ManyToMany(mappedBy = "films", fetch = FetchType.LAZY)
-    private List<Event> events;
-
-    @OneToOne(fetch = FetchType.LAZY) @MapsId
-    private Ticket ticket;
-
     @Column(name = "status")
     private String status; // sắp chiếu, đang chiếu
 
-    public Film(String string, String string10, String string2, String string3, String string4, String string5, String string6,
-            String string7, String string8, String string9) {
-    }
 }
